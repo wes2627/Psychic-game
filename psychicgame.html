@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Psychic Game</title>
+</head>
+<body>
+    <h1>The Psychic Game</h1>
+    <p>Guess what letter I'm thinking of</p><br>
+    <p>Your guesses so far: <span id="player-choice"></span></p>
+    <p>Computer guess: <span id="computer-choice"></span></p><br>
+    <p>Wins: <span id="number-of-wins"></span></p>
+    <p>Losses: <span id="number-of-losses"></span></p>
+    <script>
+        var playerChoice = document.getElementById("player-choice");
+        var computerChoice = document.getElementById("computer-choice");
+        var choiceOptions = ["a","b","c","e","f","g"];
+        var numberOfWins = document.getElementById("number-of-wins");
+        var currentWins = 0;
+        var numberOfLosses = document.getElementById("number-of-losses");
+        var currentLosses = 0;
+        document.onkeyup = function(event) {
+            var playerKeyPress = event.key
+            if (playerKeyPress != "a" && playerKeyPress != "b" && playerKeyPress != "c" && playerKeyPress != "d" && playerKeyPress != "e" && playerKeyPress != "f" && playerKeyPress != "g" ) {
+                playerChoice.textContent = "invalid";
+            } else {
+                playerChoice.textContent = playerKeyPress;
+                computerChoice.textContent = choiceOptions[Math.floor(Math.random()*choiceOptions.length)];
+                if (computerChoice.textContent == playerChoice.textContent) {
+                    currentWins++;
+                    numberOfWins.textContent = currentWins;
+                } else {
+                    currentLosses++;
+                    numberOfLosses.textContent = currentLosses;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

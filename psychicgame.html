@@ -13,6 +13,7 @@
     <p>Computer guess: <span id="computer-choice"></span></p><br>
     <p>Wins: <span id="number-of-wins"></span></p>
     <p>Losses: <span id="number-of-losses"></span></p>
+    <p>Guesses left: <span id= "guesses-left"></span></p>
     <script>
         var playerChoice = document.getElementById("player-choice");
         var computerChoice = document.getElementById("computer-choice");
@@ -21,6 +22,8 @@
         var currentWins = 0;
         var numberOfLosses = document.getElementById("number-of-losses");
         var currentLosses = 0;
+        var guessesLeft = document.getElementById("guesses-left");
+        var currentguessesLeft = 10;
         document.onkeyup = function(event) {
             var playerKeyPress = event.key
             if (playerKeyPress != "a" && playerKeyPress != "b" && playerKeyPress != "c" && playerKeyPress != "d" && playerKeyPress != "e" && playerKeyPress != "f" && playerKeyPress != "g" ) {
@@ -34,7 +37,15 @@
                 } else {
                     currentLosses++;
                     numberOfLosses.textContent = currentLosses;
-                }
+                } 
+                if (playerChoice.textContent == playerChoice.textContent){
+                    currentguessesLeft--;
+                    guessesLeft.textContent = currentguessesLeft;
+                    } else {
+                        currentguessesLeft--;
+                        guessesLeft.textContent = currentguessesLeft;
+                    
+                            }
             }
         }
     </script>
